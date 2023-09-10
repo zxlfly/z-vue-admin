@@ -1,0 +1,44 @@
+:root {
+	--z-admin-main-sidebar-width: 90px; // 侧边主导航宽度
+	--z-admin-main-sidebar-item-height: 60px; // 侧边主每一项的高度
+	--z-admin-sub-sidebar-width: 250px; // 侧边次导航宽度
+	--z-admin-sub-sidebar-collapse-width: 63px; // 侧边次导航收缩时宽度
+	--z-admin-logo-height: 50px; // Logo的高度
+	--z-admin-top-nav-height: 80px; // top(顶部导航栏)的高度
+	--z-admin-toolbar-height: 50px; // 工具栏的高度
+	--z-admin-tabbar-height: 50px; // 历史菜单的高度
+
+	// 暗黑模式下的颜色
+	// Logo区域
+	// --z-admin-sub-logo-bg-color: #060D12; // Logo背景色
+	--z-admin-logo-text-color: #fff; // Logo字体色
+
+	// 主导航
+	--z-admin-main-menu-bg-color: #303643; // 主导航背景色
+	--z-admin-main-menu-text-color: #7a6b7e; // 主导航字体色
+	--z-admin-main-menu-hover-bg-color: #3375b9; // 主导航鼠标经过背景色
+	--z-admin-main-menu-hover-text-color: #fff; // 主导航鼠标经过字体色
+	--z-admin-main-menu-active-bg-color: #3375b9; // 主导航选中背景色
+	--z-admin-main-menu-active-text-color: #fff; // 主导航选中字体色
+
+	// 次导航区域
+	--z-admin-sub-menu-bg-color: #141414; // 次导航背景色
+	--z-admin-sub-menu-text-color: #7a6b7e; // 次导航字体色
+	--z-admin-sub-menu-hover-bg-color: #14424b; // 次导航鼠标经过背景色
+	--z-admin-sub-menu-hover-text-color: #fff; // 次导航鼠标经过字体色
+	--z-admin-sub-menu-active-bg-color: #14424b; // 次导航选中背景色
+	--z-admin-sub-menu-active-text-color: #fff; // 次导航选中字体色
+
+	// tabbar
+	--z-admin-tabbar-bg-color: #303643; // tabbar背景色
+	--z-admin-tabbar-item-bg-color: #303643; // tabbaritem背景色
+	--z-admin-tabbar-item-active-bg-color: #3375b9; // tabbaritem选中项背景色
+	--z-admin-tabbar-item-hover-bg-color: #3375b9; // tabbaritem鼠标经过项背景色
+	--z-admin-tabbar-item-text-color: #7a6b7e; // tabbaritem字体色
+	--z-admin-tabbar-item-active-text-color: #fff; // tabbaritem选中项字体色
+	--z-admin-tabbar-item-hover-text-color: #fff; // tabbaritem鼠标经过项字体色
+
+	// toolbar
+	--z-admin-toolbar-bg-color: #303643; // toolbar背景色
+	--z-admin-toolbar-text-color: #7a6b7e; // toolbar字体色
+}
