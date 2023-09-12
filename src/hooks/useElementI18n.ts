@@ -7,11 +7,11 @@ export default function useElementI18n() {
 	const useAppConfig = useAppConfigStore();
 
 	const locale = computed(() => {
-		console.log(useAppConfig.appConfig.defaultLanguage);
+		console.log(useAppConfig.appConfig!.defaultLanguage);
 
-		return useAppConfig.appConfig.defaultLanguage === "zh-cn"
+		return useAppConfig.appConfig!.defaultLanguage === "zh-cn"
 			? zhCn
-			: useAppConfig.appConfig.defaultLanguage === "zh-tw"
+			: useAppConfig.appConfig!.defaultLanguage === "zh-tw"
 			? zhTw
 			: en;
 	});

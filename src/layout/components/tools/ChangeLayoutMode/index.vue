@@ -24,7 +24,7 @@ const layoutModeOptions = reactive([
 ]);
 
 function chageLayoutMode(value: LayoutMode) {
-	useAppConfig.appConfig.app.layoutMode = value;
+	useAppConfig.appConfig!.app.layoutMode = value;
 }
 </script>
 
