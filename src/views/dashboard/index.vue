@@ -1,5 +1,5 @@
 <template>
-	<ChangeLayoutMode />
+	<!-- <ChangeLayoutMode /> -->
 </template>
 
 <script setup lang="ts">
