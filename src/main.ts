@@ -11,8 +11,8 @@ const env = import.meta.env;
 if (env.VITE_USE_MOCK) {
 }
 const app = createApp(App);
-app.use(ElementPlus);
 app.use(createPinia());
+app.use(ElementPlus);
 app.use(router);
 
 app.mount("#app");

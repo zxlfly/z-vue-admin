@@ -14,7 +14,7 @@
 						class="flex-shrink-0 bg-bule-200 w-220px"
 						:class="[sideBarWidth]"
 					>
-						<Menu :item="{}" />
+						<SideBar />
 					</div>
 				</template>
 				<main class="flex-1 bg-green-300">
@@ -29,8 +29,13 @@
 
 <script setup lang="ts">
 import { useAppConfigStore } from "../stores/app-config";
-import Menu from "@/layout/components/menu/index.vue";
-
+import SideBar from "@/layout/components/SideBar/index.vue";
+const router = useRouter();
+onMounted(() => {
+	// setTimeout(() => {
+	// 	router.push("/404");
+	// }, 1000);
+});
 const useAppConfig = useAppConfigStore();
 // 顶部是否显示
 const showTop = computed(() => {

@@ -14,6 +14,7 @@ export default [
 					name: "小天",
 					age: 18,
 					token: Random.string(10),
+					role: "user",
 				},
 			};
 		},

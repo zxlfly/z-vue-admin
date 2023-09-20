@@ -93,3 +93,9 @@ index.ts：所有配置的出口
 - .env.production
 
 ## 路由
+### guard
+路由守卫权限
+### modules
+所有的路由配置写在**modules/routes**这里，导出一个配置对象，目前不考虑检索所有的.vue文件生成路由。
+### static-routes
+所有不需要权限的路由配置在这

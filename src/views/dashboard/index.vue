@@ -1,5 +1,6 @@
 <template>
-	<!-- <ChangeLayoutMode /> -->
+	<ChangeLayoutMode />
+	<RouterView />
 </template>
 
 <script setup lang="ts">
