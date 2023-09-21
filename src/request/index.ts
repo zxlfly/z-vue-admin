@@ -3,6 +3,8 @@ import axios, {
 	type AxiosResponse,
 	type InternalAxiosRequestConfig,
 } from "axios";
+import { LocalStorageService } from "@/utils/storage";
+import { TOKEN } from "@/config/cache";
 import { setRequest } from "./useCancelDuplicateRequest";
 // 类型扩展文件件types目录
 const service = axios.create({
@@ -10,7 +12,7 @@ const service = axios.create({
 	headers: {
 		"Content-Type": "application/json;charset=utf-8",
 	},
-	timeout: 10000,
+	// timeout: 10000,
 });
 // 全局的loading控制
 import { showLoading, closeLoading } from "./useRequestCount";
@@ -18,11 +20,14 @@ service.interceptors.request.use(
 	(config: InternalAxiosRequestConfig<any>) => {
 		setRequest(config);
 		const { loading = true, needToken = true } = config;
+		const token = LocalStorageService.get(TOKEN);
 		if (loading) showLoading();
-		if (localStorage.getItem("token") && !needToken) {
-			config.headers["Authorization"] =
-				"Bearer " + localStorage.getItem("token"); // 让每个请求携带自定义token 请根据实际情况自行修改
+		console.log("needToken", needToken);
+
+		if (token && needToken) {
+			config.headers["Authorization"] = "Bearer " + token; // 让每个请求携带自定义token 请根据实际情况自行修改
 		}
+
 		return config;
 	},
 	(error) => {

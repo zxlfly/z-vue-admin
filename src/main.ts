@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
-import ElementPlus from "element-plus";
+// import ElementPlus from "element-plus";
 import "virtual:windi.css";
 import "virtual:svg-icons-register";
 import "./assets/style/index.scss";
@@ -12,7 +12,7 @@ if (env.VITE_USE_MOCK) {
 }
 const app = createApp(App);
 app.use(createPinia());
-app.use(ElementPlus);
+// app.use(ElementPlus);
 app.use(router);
 
 app.mount("#app");

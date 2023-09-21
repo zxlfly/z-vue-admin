@@ -7,6 +7,7 @@ import setupSvgIcon from "./svg-icon";
 import setupExtendPluus from "./extend-plus";
 import setupIcons from "./icon";
 import setupMock from "./mock";
+import Icons from "unplugin-icons/vite";
 export default function setUpVitePlugins(
 	env: Record<string, string>,
 	isBuild: boolean
@@ -19,5 +20,10 @@ export default function setUpVitePlugins(
 	plugins.push(setupSvgIcon(isBuild));
 	VITE_USE_MOCK === "true" && plugins.push(setupMock(isBuild));
 	plugins.push(setupExtendPluus());
+	plugins.push(
+		Icons({
+			autoInstall: true,
+		})
+	);
 	return plugins;
 }

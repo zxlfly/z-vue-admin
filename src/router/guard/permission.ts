@@ -51,7 +51,7 @@ export function createPermissionGuard(
 				// await initRoutes();
 				const role = userStore.userInfo?.role || "";
 				const res = filterAsyncRoutes(dynamicRoutes, role);
-				console.log(res);
+				console.log("res", res);
 				console.log(dynamicRoutes);
 
 				if (res.length === 0) {
@@ -80,14 +80,13 @@ export function createPermissionGuard(
 }
 // 根据用户的role字段过滤出路由表
 function filterAsyncRoutes(dynamicRoutes: RouteRecordRaw[], role: string) {
-	return dynamicRoutes.filter((route) => {
-		// 1.如果route的name在routeNames中没有, 直接过滤掉
-		if (!route.meta?.roles!.includes(role)) return false;
-
-		// 2.如果当前route还有子路由(也就是有children), 需要对子路由也进行权限过滤
-		if (route.children && route.children.length > 0) {
-			route.children = filterAsyncRoutes(route.children, role);
-		}
-		return true;
-	});
+	// return dynamicRoutes.filter((route) => {
+	// 	// 1.如果route的name在routeNames中没有, 直接过滤掉
+	// 	if (!route.meta?.roles!.includes(role)) return false;
+	// 	// 2.如果当前route还有子路由(也就是有children), 需要对子路由也进行权限过滤
+	// 	if (route.children && route.children.length > 0) {
+	// 		route.children = filterAsyncRoutes(route.children, role);
+	// 	}
+	// 	return true;
+	// });
 }

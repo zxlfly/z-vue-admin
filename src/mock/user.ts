@@ -1,69 +1,79 @@
 import { Random } from "mockjs";
-import type { MockMethod } from "vite-plugin-mock";
-
+import type { MockMethod, Recordable } from "vite-plugin-mock";
+//用户信息数据
+function createUserList() {
+	return [
+		{
+			userId: 1,
+			avatar: "https://avatars.githubusercontent.com/u/26324442?v=4",
+			username: "admin",
+			password: "111111",
+			desc: "平台管理员",
+			roles: ["平台管理员"],
+			buttons: ["cuser.detail"],
+			routes: ["home"],
+			token: "Admin Token",
+		},
+		{
+			userId: 2,
+			avatar: "https://avatars.githubusercontent.com/u/26324442?v=4",
+			username: "system",
+			password: "111111",
+			desc: "系统管理员",
+			roles: ["系统管理员"],
+			buttons: ["cuser.detail", "cuser.user"],
+			routes: ["home"],
+			token: "System Token",
+		},
+	];
+}
+interface res {
+	url: Recordable;
+	body: Recordable;
+	query: Recordable;
+	headers: Recordable;
+}
 export default [
 	{
 		url: "/api/login",
-		method: "get",
-		response: () => {
-			return {
-				code: 200,
-				message: "请求成功",
-				type: "success",
-				result: {
-					name: "小天",
-					age: 18,
-					token: Random.string(10),
-					role: "user",
-				},
-			};
+		method: "post",
+		response: ({ body }: res) => {
+			//获取请求体携带过来的用户名与密码
+			const { userName, password } = body;
+			//调用获取用户信息函数,用于判断是否有此用户
+			const checkUser = createUserList().find(
+				(item) =>
+					item.username === userName && item.password === password
+			);
+			//没有用户返回失败信息
+			if (!checkUser) {
+				return { code: 201, data: { message: "账号或者密码不正确" } };
+			}
+			//如果有返回成功信息
+			const { token } = checkUser;
+			return { code: 200, data: { token } };
 		},
 	},
 
+	// 获取用户信息
 	{
-		url: "/api/user/permission",
+		url: "/api/user/info",
 		method: "get",
-		response: () => {
-			return {
-				code: 200,
-				message: "请求成功",
-				type: "success",
-				result: {
-					permissions: ["user.read", "user.detail"],
-				},
-			};
-		},
-	},
+		response: (request: res) => {
+			//获取请求头携带token
+			const token = request.headers.authorization.replace("Bearer ", "");
+			console.log("request", token);
 
-	{
-		url: "/api/user/backend",
-		method: "get",
-		response: () => {
-			return {
-				code: 200,
-				message: "请求成功",
-				type: "success",
-				result: {
-					// 数据是不带children的这种
-					backendRoutes: [
-						{
-							name: "demo1",
-						},
-						{
-							name: "demo1-1",
-						},
-						{
-							name: "demo1-2",
-							meta: {
-								title: "demo1-222222",
-								icon: "ep:avatar",
-							},
-						},
-					],
-					// 按钮权限等 如果不需要 设为[]  permissions:[] 不要为其他值
-					permissions: ["demo1-2.add"],
-				},
-			};
+			//查看用户信息是否包含有次token用户
+			const checkUser = createUserList().find(
+				(item) => item.token === token
+			);
+			//没有返回失败的信息
+			if (!checkUser) {
+				return { code: 201, data: { message: "获取用户信息失败" } };
+			}
+			//如果有返回成功信息
+			return { code: 200, data: { checkUser } };
 		},
 	},
 ] as MockMethod[];
