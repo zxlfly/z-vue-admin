@@ -1,6 +1,6 @@
 import type { Router, RouteRecordRaw } from "vue-router";
 import { useUserStore } from "@/stores/user";
-import { useRouterList } from "@/stores/routes-list";
+import { useRouterListStore } from "@/stores/routes-list";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
@@ -10,7 +10,7 @@ export function createPermissionGuard(
 ) {
 	router.beforeEach(async (to, from, next) => {
 		const userStore = useUserStore();
-		const useRouter = useRouterList();
+		const useRouter = useRouterListStore();
 		NProgress.start();
 		// 白名单，目前没有配置
 		// 不需要权限

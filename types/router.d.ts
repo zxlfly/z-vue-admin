@@ -8,7 +8,7 @@ declare module "vue-router" {
 		// 图标显示在侧面菜单中
 		icon?: string;
 		// 区域设置名称显示在侧面菜单和面包屑中
-		locale?: string;
+		title?: string;
 		// 如果为true，则不会显示在侧边菜单中
 		hideInMenu?: boolean;
 		// 对路由菜单项进行排序。如果设置key，值越大越靠前

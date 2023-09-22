@@ -23,4 +23,7 @@ declare interface SYSGlobalConfig {
 	elementPlusSize: ElementPlusSize;
 	app: SYSGlobalApp;
 	nav: SYSGlobalNav;
+	title: string;
+	logo: string;
+	showLogo: true;
 }

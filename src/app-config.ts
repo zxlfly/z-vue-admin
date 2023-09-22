@@ -1,3 +1,4 @@
+import logo from "@/assets/img/pro.png";
 const SystemGlobalConfig: SYSGlobalConfig = {
 	// 默认语言. zh-cn: 简体中文 zh-tw: 繁体中文 en: 英文
 	defaultLanguage: "zh-cn",
@@ -26,5 +27,8 @@ const SystemGlobalConfig: SYSGlobalConfig = {
 		// 操作栏（tabbar和toolbar）是否固定
 		fixed: true,
 	},
+	title: "这是一个可配置的title",
+	logo: logo,
+	showLogo: true,
 };
 export default SystemGlobalConfig;
