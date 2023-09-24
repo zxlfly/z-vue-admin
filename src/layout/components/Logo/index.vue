@@ -7,7 +7,11 @@
 			placement="top-start"
 			:show-after="1000"
 		>
-			<div>
+			<!-- >v-show="!useLayOutSetting.collapseMenu" -->
+			<div
+				class="title"
+				:style="{ opacity: !useLayOutSetting.collapseMenu ? 1 : 0 }"
+			>
 				{{ SystemGlobalConfig.title }}
 			</div>
 		</el-tooltip>
@@ -16,6 +20,8 @@
 
 <script setup lang="ts" name="Logo">
 import SystemGlobalConfig from "@/app-config";
+import { useLayOutSettingStore } from "@/stores/layout-setting.ts";
+let useLayOutSetting = useLayOutSettingStore();
 </script>
 <style lang="scss" scoped>
 .logo {
@@ -38,6 +44,9 @@ import SystemGlobalConfig from "@/app-config";
 		overflow: hidden;
 		white-space: nowrap;
 		font-size: var(--z-admin-layout-logo-fontsize);
+	}
+	.title {
+		transition: all 0.3s;
 	}
 }
 </style>

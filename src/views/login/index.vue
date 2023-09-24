@@ -43,7 +43,7 @@ import { User, Lock } from "@element-plus/icons-vue";
 const loginFormRef = ref<FormInstance>();
 const loginForm = reactive({
 	account: "admin",
-	password: "adminadmin",
+	password: "123456",
 });
 
 const loginRules = reactive<FormRules>({

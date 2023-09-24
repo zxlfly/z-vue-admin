@@ -4,16 +4,15 @@ import {
 	createWebHashHistory,
 	type RouteRecordRaw,
 } from "vue-router";
-import { staticRoutes } from "./static-routes";
-import dynamicRoutes from "./modules/index";
+import { constantRoute, asyncRoute, anyRoute } from "./routes";
 import { createPermissionGuard } from "./guard/permission";
-
 const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),
-	routes: [...staticRoutes],
+	routes: [...constantRoute],
 	scrollBehavior() {
 		return { top: 0, left: 0 };
 	},
 });
-// createPermissionGuard(router, dynamicRoutes);
+
+createPermissionGuard(router);
 export default router;

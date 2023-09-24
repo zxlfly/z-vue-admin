@@ -4,11 +4,11 @@ import IconsResolver from "unplugin-icons/resolver";
 export default function setupComponents() {
 	return components({
 		resolvers: [
-			IconsResolver({
-				enabledCollections: ["ep"],
-			}),
+			// IconsResolver({
+			// 	enabledCollections: ["ep"],
+			// }),
 			// 自动导入 Element Plus 组件
-			ElementPlusResolver(),
+			// ElementPlusResolver(),
 		],
 		dirs: ["src/components"],
 		include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/],

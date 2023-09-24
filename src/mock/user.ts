@@ -7,22 +7,33 @@ function createUserList() {
 			userId: 1,
 			avatar: "https://avatars.githubusercontent.com/u/26324442?v=4",
 			username: "admin",
-			password: "111111",
+			password: "123456",
 			desc: "平台管理员",
 			roles: ["平台管理员"],
 			buttons: ["cuser.detail"],
-			routes: ["home"],
+			routes: [
+				"Home",
+				"Acl",
+				"User",
+				"Role",
+				"Permission",
+				"Product",
+				"Trademark",
+				"Attr",
+				"Spu",
+				"Sku",
+			],
 			token: "Admin Token",
 		},
 		{
 			userId: 2,
 			avatar: "https://avatars.githubusercontent.com/u/26324442?v=4",
 			username: "system",
-			password: "111111",
+			password: "123456",
 			desc: "系统管理员",
 			roles: ["系统管理员"],
 			buttons: ["cuser.detail", "cuser.user"],
-			routes: ["home"],
+			routes: ["Home", "Product", "Trademark", "Attr", "Spu", "Sku"],
 			token: "System Token",
 		},
 	];
@@ -73,7 +84,7 @@ export default [
 				return { code: 201, data: { message: "获取用户信息失败" } };
 			}
 			//如果有返回成功信息
-			return { code: 200, data: { checkUser } };
+			return { code: 200, data: { ...checkUser } };
 		},
 	},
 ] as MockMethod[];

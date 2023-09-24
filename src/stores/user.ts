@@ -6,14 +6,15 @@ import {
 } from "@/api/user";
 import { USER, TOKEN } from "@/config/cache";
 import { LocalStorageService } from "@/utils/storage";
-// interface UserData {
-// 	token: string;
-// 	userInfo: string;
-// 	role: string;
-// }
-
+import { ElNotification } from "element-plus";
+import { constantRoute, asyncRoute, anyRoute } from "@/router/routes";
+import type { RouteRecordRaw } from "vue-router";
+import { cloneDeep } from "lodash-es";
+import routerconfig from "@/router/index";
 export const useUserStore = defineStore(USER, () => {
 	const router = useRouter();
+	const route = useRoute();
+	const menuRoutes = ref<RouteRecordRaw[]>();
 	// 读取缓存配置，如果存在就使用
 	let res = LocalStorageService.get(USER) as UserLoginInfo | null;
 	const userInfo = res ? ref(res) : ref(null);
@@ -22,17 +23,27 @@ export const useUserStore = defineStore(USER, () => {
 	async function login(userName: string, password: string) {
 		try {
 			let res = await loginApi(userName, password);
-			console.log("res", res);
 			if (res.code == 200) {
+				// 这个的情况要根据实际需求来，如果是直接返回用户信息就不需要这样处理
+				// 而且如果这样处理，在路由守卫中就得确定是否由用户信息，仅凭token是不行的
 				LocalStorageService.set(TOKEN, res.data.token);
-				// router.push("/");
 				let info = await getUser();
-				console.log("info", info);
-				ElNotification({
-					title: "欢迎回来！",
-					type: "success",
-					message: "登录成功",
-				});
+				if (info) {
+					ElNotification({
+						title: "欢迎回来！",
+						type: "success",
+						message: "登录成功",
+					});
+					console.log("route", route);
+					if (
+						route.query.redirect &&
+						typeof route.query.redirect == "string"
+					) {
+						router.push(route.query.redirect);
+					} else {
+						router.push("/");
+					}
+				}
 			} else {
 				ElNotification({
 					type: "warning",
@@ -49,32 +60,64 @@ export const useUserStore = defineStore(USER, () => {
 			return error;
 		}
 	}
+	const getRouterMenu = () => {
+		let routes = filterAsyncRoute(
+			userInfo.value?.routes ?? [],
+			cloneDeep(asyncRoute)
+		);
+		menuRoutes.value = [...constantRoute, ...routes, anyRoute];
+		[...routes, anyRoute].forEach((route: any) => {
+			routerconfig.addRoute(route);
+		});
+	};
 	//获取用户信息
-	async function getUser() {
+	async function getUser(): Promise<boolean> {
 		try {
 			let res = await getUserInfo();
-			console.log("res", res);
 			if (res.code == 200) {
-				// router.push("/");
+				userInfo.value = res.data;
+				LocalStorageService.set(USER, res.data);
+				getRouterMenu();
+				return true;
 			} else {
-				// ElNotification({
-				// 	type: "warning",
-				// });
+				ElNotification({
+					type: "warning",
+					message: "登录失败",
+				});
+				return false;
 			}
 		} catch (error) {
 			console.log(error);
+			return false;
 		}
 	}
+
 	// 退出登录
 	function loginOut() {
 		LocalStorageService.remove(USER);
+		LocalStorageService.remove(TOKEN);
+		router.push("/login");
 	}
-	console.log("userInfo", userInfo.value);
 
 	return {
 		loginOut,
 		userInfo,
 		getToken,
 		login,
+		menuRoutes,
+		getRouterMenu,
 	};
 });
+function filterAsyncRoute(
+	roles: Array<string>,
+	asyncRoute: RouteRecordRaw[]
+): RouteRecordRaw[] {
+	return asyncRoute.filter((item) => {
+		if (roles.includes(item.name as string)) {
+			if (item.children && item.children.length > 0) {
+				item.children = filterAsyncRoute(roles, item.children);
+			}
+			return true;
+		}
+	});
+}

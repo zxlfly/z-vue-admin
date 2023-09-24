@@ -6,3 +6,4 @@ export const TOKEN = "token";
 export const APP_CONFIG = "add_config";
 export const MENU_LIST = "menu_list";
 export const ROUTER_LIST = "router_list";
+export const LAYOUT_SETTING = "useLayOutSettingStore";

@@ -9,10 +9,10 @@ export default function setupAutoImport() {
 	return AutoImport({
 		imports: ["vue", "vue-router", "pinia"],
 		resolvers: [
-			IconsResolver({
-				prefix: "Icon",
-			}),
-			ElementPlusResolver(),
+			// IconsResolver({
+			// 	prefix: "Icon",
+			// }),
+			// ElementPlusResolver(),
 		],
 		dts: "types/auto-imports.d.ts",
 	});

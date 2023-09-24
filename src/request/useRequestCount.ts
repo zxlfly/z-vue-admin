@@ -1,4 +1,4 @@
-// import { ElLoading } from "element-plus";
+import { ElLoading } from "element-plus";
 //@ts-ignore
 const loadingInstance = ElLoading.service;
 // 记录请求数量 默认开启全局loading，可以在请求头中配置是否开启
