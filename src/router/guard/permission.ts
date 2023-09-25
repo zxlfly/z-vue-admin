@@ -44,7 +44,7 @@ export function createPermissionGuard(router: Router) {
 				userStore.menuRoutes.length == 0
 			) {
 				userStore.getRouterMenu();
-				next();
+				next({ ...to, replace: true });
 			} else if (to.path === "/login") {
 				next({ path: "/" });
 			} else {

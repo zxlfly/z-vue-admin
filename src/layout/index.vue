@@ -49,6 +49,7 @@ const route = useRoute();
 <style scoped scss>
 .layout-container {
 	width: 100%;
+	/* min-width: 1200px; */
 	height: 100vh;
 	.layput-sidebar {
 		/* transition: all 0.3s; */

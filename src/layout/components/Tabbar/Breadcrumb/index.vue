@@ -9,7 +9,7 @@
 		></component>
 	</el-icon>
 	<!-- 左侧的面包屑 -->
-	<el-breadcrumb separator="/" :separator-icon="ArrowRight">
+	<el-breadcrumb separator="/" separator-icon="ArrowRight">
 		<el-breadcrumb-item
 			v-for="(item, index) in route.matched"
 			:key="index"
