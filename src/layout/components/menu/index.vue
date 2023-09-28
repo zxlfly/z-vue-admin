@@ -83,4 +83,6 @@ defineProps({
 });
 </script>
 
-<style scoped scss></style>
+<style scoped scss>
+@import url(./index.scss);
+</style>

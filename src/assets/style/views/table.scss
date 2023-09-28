@@ -1,0 +1,16 @@
+// 表格行高
+:deep(.el-table tr) {
+    height: 32px;
+}
+
+:deep(.el-table--default .el-table__cell) {
+    padding: 0;
+}
+
+.table-icon{
+    display: flex;
+    align-items: center;
+    .el-icon{
+        color:var(--el-color-primary)
+    }
+}

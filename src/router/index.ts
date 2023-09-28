@@ -1,18 +1,13 @@
-import {
-	createRouter,
-	createWebHistory,
-	createWebHashHistory,
-	type RouteRecordRaw,
-} from "vue-router";
-import { constantRoute, asyncRoute, anyRoute } from "./routes";
-import { createPermissionGuard } from "./guard/permission";
+import { createRouter, createWebHashHistory } from "vue-router"
+import { constantRoute } from "./routes"
+import { createPermissionGuard } from "./guard/permission"
 const router = createRouter({
-	history: createWebHashHistory(import.meta.env.BASE_URL),
-	routes: [...constantRoute],
-	scrollBehavior() {
-		return { top: 0, left: 0 };
-	},
-});
+    history: createWebHashHistory(import.meta.env.BASE_URL),
+    routes: [...constantRoute],
+    scrollBehavior() {
+        return { top: 0, left: 0 }
+    },
+})
 
-createPermissionGuard(router);
-export default router;
+createPermissionGuard(router)
+export default router

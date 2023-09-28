@@ -1,5 +1,9 @@
 <template>
-	<div class="logo" v-if="SystemGlobalConfig.showLogo">
+	<div
+		class="logo"
+		:class="{ collapseMenu: useLayOutSetting.collapseMenu }"
+		v-if="SystemGlobalConfig.showLogo"
+	>
 		<img :src="SystemGlobalConfig.logo" />
 		<el-tooltip
 			class="box-item"
@@ -31,9 +35,13 @@ let useLayOutSetting = useLayOutSettingStore();
 	align-items: center;
 	justify-content: start;
 	padding: 10px;
-	color: var(--z-admin-layout-logo-color);
+	transition: all 0.3s;
+	&.collapseMenu {
+		width: var(--z-admin-layout-sidebar-minwidth);
+	}
+	// color: var(--z-admin-layout-logo-color);
 	img {
-		width: 40px;
+		width: 26px;
 		max-height: 100%;
 		margin-right: 5px;
 		flex-shrink: 0;

@@ -12,24 +12,19 @@
 		circle
 	></el-button>
 
-	<!-- <el-popover
-		placement="bottom"
-		title="主题设置"
-		:width="250"
-		trigger="focus"
-	>
-		
-		<template #reference>
-			
-		</template>
-	</el-popover> -->
 	<el-button
 		@click="drawer = !drawer"
 		size="small"
 		icon="Setting"
 		circle
 	></el-button>
-	<el-drawer v-model="drawer" title="主题设置" direction="rtl">
+	<el-drawer
+		size="300"
+		v-model="drawer"
+		title="主题设置"
+		append-to-body
+		direction="rtl"
+	>
 		<el-form class="demo-form-inline">
 			<el-form-item label="主题颜色">
 				<el-color-picker
@@ -41,9 +36,7 @@
 			</el-form-item>
 			<el-form-item label="暗黑模式">
 				<el-switch
-					v-model="dark"
-					class="mt-2"
-					style="margin-left: 24px"
+					:model-value="useAppConfig.darkMode"
 					inline-prompt
 					active-icon="MoonNight"
 					inactive-icon="Sunny"
@@ -79,10 +72,15 @@
 </template>
 
 <script setup lang="ts" name="Setting">
-import { useLayOutSettingStore } from "@/stores/layout-setting.ts";
-import { useUserStore } from "@/stores/user.ts";
+import { useLayOutSettingStore } from "@/stores/layout-setting";
+import { useUserStore } from "@/stores/user";
 import user from "@/assets/img/user.png";
+import { useChartStore } from "@/stores/chart";
+import { useAppConfigStore } from "@/stores/app-config";
+const useAppConfig = useAppConfigStore();
+const useChart = useChartStore();
 const useUser = useUserStore();
+
 let useLayOutSetting = useLayOutSettingStore();
 const updateRefsh = () => {
 	useLayOutSetting.mainRefsh = !useLayOutSetting.mainRefsh;
@@ -99,11 +97,10 @@ const toLogin = () => {
 	useUser.loginOut();
 };
 const drawer = ref(false);
-// 暗黑模式
-const dark = ref(false);
+
 const changeDark = () => {
-	let html = document.documentElement;
-	dark.value ? (html.className = "dark") : (html.className = "light");
+	useAppConfig.setDarkMode();
+	useChart.setDarkMode(useAppConfig.darkMode);
 };
 //主题颜色的设置
 const color = ref("rgba(255, 69, 0, 0.68)");

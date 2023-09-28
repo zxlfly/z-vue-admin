@@ -7,8 +7,9 @@
 	--z-admin-layout-sidebar-width: 250px;
 	--z-admin-layout-sidebar-minwidth: 60px;
 	// 左侧菜单的背景颜色
-	--z-admin-layout-sidebar-bg: #00142c;
-	--z-admin-layout-sidebar-color: #fff;
+	// --z-admin-layout-sidebar-bg: #00142c;
+	--z-admin-layout-sidebar-bg: #fff;
+	--z-admin-layout-sidebar-color: #252b3a;
 	// 顶部tabbar高度
 	--z-admin-layout-tabbar-height: 60px;
 	// 顶部tabbar背景颜色
@@ -16,4 +17,31 @@
 	// logo 标题字体大小
 	--z-admin-layout-logo-fontsize: 18px;
 	--z-admin-layout-logo-color: #fff;
+	// main的边距
+	--z-admin-layout-main-margin: 0px;
+	// 过去时间
+	--z-admin-layout-transition-duration: 0.3s;
+	// 版权信息栏高度
+	--z-admin-layput-credits-height: 40px;
+
+	// 表格背景颜色
+	--z-admin-layout-table-bg: #fff;
+	// 阴影
+	--z-admin-layout-shadow: 0 3px 10px #4062e133;
+
+	// menu 鼠标移入背景颜色 
+	--z-admin-layout-el-menu-item-hover-bg: #f2f5fc;
+	// menu 选中背景颜色 
+	--z-admin-layout-el-menu-item-is-active-bg: #5e7ce0;
+	// menu 选中字体颜色 
+	--z-admin-layout-el-menu-item-is-active-color: #fff;
+}
+html.dark {
+	// 版权信息栏高度
+	--z-admin-layput-credits-height: 40px;
+	// 表格顶部搜索栏背景颜色
+	--z-admin-layout-table-bg: #000;
+	--z-admin-layout-sidebar-bg: #000;
+	--z-admin-layout-sidebar-color: #fff;
+	--z-admin-layout-el-menu-item-hover-bg: rgba(136, 136, 136, 0.322);
 }

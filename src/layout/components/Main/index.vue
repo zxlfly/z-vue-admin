@@ -2,7 +2,9 @@
 	<!-- 路由组件出口的位置 -->
 	<router-view v-slot="{ Component }">
 		<transition name="fade">
-			<component v-if="flag" :is="Component" />
+			<keep-alive :include="cachedViews" :max="10">
+				<component v-if="flag" :is="Component" />
+			</keep-alive>
 		</transition>
 	</router-view>
 </template>
@@ -11,7 +13,7 @@
 import { useLayOutSettingStore } from "@/stores/layout-setting.ts";
 let useLayOutSetting = useLayOutSettingStore();
 const flag = ref(true);
-
+const cachedViews = ref([]);
 watch(
 	() => useLayOutSetting.mainRefsh,
 	() => {

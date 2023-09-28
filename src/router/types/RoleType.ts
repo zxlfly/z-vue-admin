@@ -1,5 +1,5 @@
 // 角色
 export enum RoleType {
-	admin = "admin",
-	user = "user",
+    admin = "admin",
+    user = "user",
 }
