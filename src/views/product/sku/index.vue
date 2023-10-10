@@ -1,5 +1,5 @@
 <template>
-	<div>sku/index.vue</div>
+    <div>sku/index.vue</div>
 </template>
 
 <script setup lang="ts"></script>

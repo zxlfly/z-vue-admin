@@ -1,5 +1,5 @@
 <template>
-	<div>spu/index.vue</div>
+    <div>spu/index.vue</div>
 </template>
 
 <script setup lang="ts"></script>

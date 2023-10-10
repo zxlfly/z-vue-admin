@@ -2,10 +2,20 @@
     <div ref="tuiCalendar" class="calendar-wrapper"></div>
 </template>
 <script setup>
-import Calendar from 'tui-calendar-hi';
-import { ref, onMounted, reactive, nextTick, defineProps, defineExpose, defineEmits, computed, watch } from 'vue'
+import Calendar from "tui-calendar-hi"
+import {
+    ref,
+    onMounted,
+    reactive,
+    nextTick,
+    defineProps,
+    defineExpose,
+    defineEmits,
+    computed,
+    watch,
+} from "vue"
 
-const emit = defineEmits(['beforeClickSchedule'])
+const emit = defineEmits(["beforeClickSchedule"])
 const tuiCalendar = ref()
 const state = reactive({
     calendarInstance: null,
@@ -16,97 +26,102 @@ const props = defineProps({
     calendars: {
         type: Array,
         default() {
-            return [];
-        }
+            return []
+        },
     },
     schedules: {
         type: Array,
         default() {
-            return [];
+            return []
         },
         validator(value) {
-            let notHave = false;
+            let notHave = false
 
-            value.forEach(schedule => {
-                notHave = ['start', 'category'].some(prop => !schedule.hasOwnProperty(prop));
-            });
+            value.forEach((schedule) => {
+                notHave = ["start", "category"].some(
+                    (prop) => !schedule.hasOwnProperty(prop),
+                )
+            })
 
-            return !notHave;
-        }
+            return !notHave
+        },
     },
     view: {
         type: String,
-        default: 'week'
+        default: "week",
     },
     taskView: {
         type: [Boolean, Array],
-        default: true
+        default: true,
     },
     scheduleView: {
         type: [Boolean, Array],
-        default: true
+        default: true,
     },
     theme: {
         type: Object,
         default() {
-            return {};
-        }
+            return {}
+        },
     },
     template: {
         type: Object,
         default() {
-            return {};
-        }
+            return {}
+        },
     },
     week: {
         type: Object,
         default() {
-            return {};
-        }
+            return {}
+        },
     },
     month: {
         type: Object,
         default() {
-            return {};
-        }
+            return {}
+        },
     },
     useCreationPopup: {
         type: Boolean,
-        default: true
+        default: true,
     },
     useDetailPopup: {
         type: Boolean,
-        default: true
+        default: true,
     },
     timezones: {
         type: Array,
         default() {
-            return [];
-        }
+            return []
+        },
     },
     disableDblClick: {
         type: Boolean,
-        default: false
+        default: false,
     },
     disableClick: {
         type: Boolean,
-        default: false
+        default: false,
     },
     isReadOnly: {
         type: Boolean,
-        default: false
+        default: false,
     },
     usageStatistics: {
         type: Boolean,
-        default: true
-    }
+        default: true,
+    },
 })
-watch(() => props.schedules, (newV, old) => {
-    if (newV.length > 0) {
-        state.schedules = newV
-        resetRender()
-    }
-})
+watch(
+    () => props.schedules,
+    (newV, old) => {
+        if (newV.length > 0) {
+            state.schedules = newV
+            resetRender()
+        }
+    },
+)
 
 onMounted(() => {
     state.calendarInstance = new Calendar(tuiCalendar.value, {
@@ -124,38 +139,44 @@ onMounted(() => {
         disableDblClick: props.disableDblClick,
         disableClick: props.disableClick,
         isReadOnly: props.isReadOnly,
-        usageStatistics: props.usageStatistics
-    });
-    addEventListeners();
-    reflectSchedules();
+        usageStatistics: props.usageStatistics,
+    })
+    addEventListeners()
+    reflectSchedules()
 })
 
 const addEventListeners = () => {
-    state.calendarInstance.on('beforeClickSchedule', (...args) => emit('beforeClickSchedule', ...args));
-    state.calendarInstance.on('beforeCreateSchedule', (...args) => emit('beforeCreateSchedule', ...args));
-    state.calendarInstance.on('beforeUpdateSchedule', (...args) => emit('beforeUpdateSchedule', ...args));
+    state.calendarInstance.on("beforeClickSchedule", (...args) =>
+        emit("beforeClickSchedule", ...args),
+    )
+    state.calendarInstance.on("beforeCreateSchedule", (...args) =>
+        emit("beforeCreateSchedule", ...args),
+    )
+    state.calendarInstance.on("beforeUpdateSchedule", (...args) =>
+        emit("beforeUpdateSchedule", ...args),
+    )
 }
 const reflectSchedules = () => {
     if (state.schedules.length > 0) {
-        invoke('createSchedules', state.schedules);
+        invoke("createSchedules", state.schedules)
     }
 }
 const invoke = (methodName, ...args) => {
-    let result;
+    let result
     if (state.calendarInstance[methodName]) {
-        result = state.calendarInstance[methodName](...args);
+        result = state.calendarInstance[methodName](...args)
     }
-    return result;
+    return result
 }
 const getRootElement = () => {
-    return tuiCalendar.value;
+    return tuiCalendar.value
 }
 const getInstance = () => {
-    return state.calendarInstance;
+    return state.calendarInstance
 }
 const resetRender = () => {
-    state.calendarInstance.clear();
-    reflectSchedules();
+    state.calendarInstance.clear()
+    reflectSchedules()
 }
 
 defineExpose({ getRootElement, getInstance, resetRender })

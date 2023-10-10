@@ -1,10 +1,5 @@
-<template>
-    版权信息
-</template>
+<template>版权信息</template>
 
-<script lang='ts' setup name="Credits">
+<script lang="ts" setup name="Credits"></script>
 
-</script>
-
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

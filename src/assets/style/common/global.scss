@@ -3,28 +3,32 @@ body,
 #app {
 	height: 100%;
 }
+
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
+
 /* 自定义滚动条样式 */
+
 /* Webkit 浏览器 */
 ::-webkit-scrollbar {
-	/*滚动条整体样式*/
+	/* 滚动条整体样式 */
 	width: 4px;
-	/*高宽分别对应横竖滚动条的尺寸*/
+
+	/* 高宽分别对应横竖滚动条的尺寸 */
 	height: 1px;
 }
 
 ::-webkit-scrollbar-thumb {
-	/*滚动条里面小方块*/
+	/* 滚动条里面小方块 */
 	border-radius: 10px;
 	background: #c0bdbd;
 }
 
 ::-webkit-scrollbar-track {
-	/*滚动条里面轨道*/
+	/* 滚动条里面轨道 */
 	border-radius: 10px;
 	background: #ededed;
 }
