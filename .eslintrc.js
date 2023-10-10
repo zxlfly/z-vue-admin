@@ -19,12 +19,15 @@ module.exports = {
             jsx: true,
         },
     },
-    /* 继承已有的规则 */
+    /* 继承已有的规则  使用了自动引入插件就需要将生成的./.eslintrc-auto-import.json文件引入*/
     extends: [
         "eslint:recommended",
         "plugin:vue/vue3-essential",
+        "plugin:vue/vue3-recommended",
         "plugin:@typescript-eslint/recommended",
-        // "plugin:prettier/recommended",
+        "plugin:prettier/recommended",
+        "./.eslintrc-auto-import.json",
+        "prettier",
     ],
     plugins: ["vue", "@typescript-eslint"],
     /*
@@ -32,8 +35,9 @@ module.exports = {
      * "warn" 或 1   ==>  打开的规则作为警告（不影响代码执行）
      * "error" 或 2  ==>  规则作为一个错误（代码不能执行，界面报错）
      */
+    // 全局自定义的宏，这样在源文件中使用全局变量就不会报错或者警告
+    globals: {},
     rules: {
-        semi: ["error", "never"],
         // eslint（https://eslint.bootcss.com/docs/rules/）
         "no-var": "error", // 要求使用 let 或 const 而不是 var
         "no-multiple-empty-lines": ["warn", { max: 1 }], // 不允许多个空行
@@ -55,5 +59,14 @@ module.exports = {
         "vue/script-setup-uses-vars": "error", // 防止<script setup>使用的变量<template>被标记为未使用
         "vue/no-mutating-props": "off", // 不允许组件 prop的改变
         "vue/attribute-hyphenation": "off", // 对模板中的自定义组件强制执行属性命名样式
+        indent: [
+            "error",
+            4,
+            {
+                ignoredNodes: ["ConditionalExpression"],
+            },
+        ],
+        semi: "off",
+        "prettier/prettier": "error",
     },
-}
+};
