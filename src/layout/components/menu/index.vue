@@ -83,6 +83,6 @@ defineProps({
 })
 </script>
 
-<style scoped scss>
+<style scoped lang="scss">
 @import "./index";
 </style>

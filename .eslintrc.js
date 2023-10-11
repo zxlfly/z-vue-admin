@@ -69,4 +69,4 @@ module.exports = {
         semi: "off",
         "prettier/prettier": "error",
     },
-};
+}

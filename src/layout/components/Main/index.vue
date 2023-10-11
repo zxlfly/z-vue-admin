@@ -27,7 +27,7 @@ watch(
 <style lang="scss" scoped>
 .fade-enter-from {
     opacity: 0;
-    transform: scale(0);
+    transform: scale(0.99);
 }
 
 .fade-enter-active {

@@ -9,21 +9,21 @@ import setupIcons from "./icon";
 import setupMock from "./mock";
 import Icons from "unplugin-icons/vite";
 export default function setUpVitePlugins(
-	env: Record<string, string>,
-	isBuild: boolean
+    env: Record<string, string>,
+    isBuild: boolean
 ) {
-	const { VITE_USE_MOCK } = env;
-	const plugins = [vue(), vueJsx(), WindiCSS()];
-	plugins.push(setupAutoImport());
-	plugins.push(setupComponent());
-	plugins.push(setupIcons());
-	plugins.push(setupSvgIcon(isBuild));
-	VITE_USE_MOCK === "true" && plugins.push(setupMock(isBuild));
-	plugins.push(setupExtendPluus());
-	plugins.push(
-		Icons({
-			autoInstall: true,
-		})
-	);
-	return plugins;
+    const { VITE_USE_MOCK } = env;
+    const plugins = [vue(), vueJsx(), WindiCSS()];
+    plugins.push(setupAutoImport());
+    plugins.push(setupComponent());
+    plugins.push(setupIcons());
+    plugins.push(setupSvgIcon(isBuild));
+    VITE_USE_MOCK === "true" && plugins.push(setupMock(isBuild));
+    plugins.push(setupExtendPluus());
+    plugins.push(
+        Icons({
+            autoInstall: true,
+        })
+    );
+    return plugins;
 }

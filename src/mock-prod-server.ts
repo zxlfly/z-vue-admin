@@ -1,6 +1,6 @@
-import { createProdMockServer } from "vite-plugin-mock/es/createProdMockServer"
+import { createProdMockServer } from "vite-plugin-mock/client"
 import userModule from "./mock/user"
 
-export function setupProdMockServer() {
+export async function setupProdMockServer() {
     createProdMockServer([...userModule])
 }

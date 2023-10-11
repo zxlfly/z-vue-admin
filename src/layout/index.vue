@@ -51,10 +51,12 @@ import { useLayOutSettingStore } from "@/stores/layout-setting.ts"
 let useLayOutSetting = useLayOutSettingStore()
 // const useRouterList = useRouterListStore();
 const useUser = useUserStore()
+console.log(useUser.menuRoutes)
+
 const route = useRoute()
 </script>
 
-<style scoped scss>
+<style scoped lang="scss">
 .layout-page {
     width: 100%;
     height: 100%;
@@ -73,8 +75,8 @@ const route = useRoute()
 
             /* background: var(--z-admin-layout-tabbar-bg); */
 
-            /* &.collapseMenu {
-            } */
+            // &.collapseMenu {
+            // }
         }
 
         .layout-sidebar {
@@ -116,10 +118,11 @@ const route = useRoute()
 
                 .layout-main-card-scrollbar {
                     height: calc(
-                        100vh - var(--z-admin-layput-credits-height) -
-                            var(--z-admin-layout-tabbar-height) -
-                            var(--z-admin-layout-main-margin) -
-                            var(--z-admin-layout-main-margin)
+                        100vh - var(--z-admin-layput-credits-height) - var(
+                                --z-admin-layout-tabbar-height
+                            ) - var(--z-admin-layout-main-margin) - var(
+                                --z-admin-layout-main-margin
+                            )
                     );
                 }
             }
