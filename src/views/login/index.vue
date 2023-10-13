@@ -28,7 +28,8 @@
                 </el-form-item>
 
                 <el-button class="login-btn" type="primary" @click="submitForm">
-                    登录
+                    <!-- 登录 -->
+                    {{ $t("message.hello") }}
                 </el-button>
             </el-form>
         </div>
@@ -72,7 +73,6 @@ const loginRules = reactive<FormRules>({
         },
     ],
 })
-const router = useRouter()
 const useUser = useUserStore()
 const submitForm = async () => {
     await loginFormRef.value?.validate((valid, fields) => {

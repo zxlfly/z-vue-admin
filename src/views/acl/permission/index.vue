@@ -135,7 +135,7 @@
 </template>
 
 <script setup lang="ts">
-import headerSearch from "@/components/headerSearch/index.vue"
+import headerSearch from "@/components/header-search/index.vue"
 
 // 搜索
 const form = reactive({

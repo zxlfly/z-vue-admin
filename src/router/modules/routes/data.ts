@@ -1,16 +1,12 @@
-import { RoleType } from "@/router/types/RoleType"
-
 export default {
     path: "data",
     name: "Data",
-    id: "Data",
     label: "数据展示",
     component: () => import("@/views/form/index.vue"),
     meta: {
         locale: "menu.form",
         requiresAuth: true,
         order: 3,
-        roles: [RoleType.admin, RoleType.user],
     },
     children: [
         {
@@ -22,7 +18,6 @@ export default {
             meta: {
                 locale: "",
                 requiresAuth: true,
-                roles: [RoleType.admin, RoleType.user],
             },
         },
         {
@@ -34,7 +29,6 @@ export default {
             meta: {
                 locale: "",
                 requiresAuth: true,
-                roles: [RoleType.admin, RoleType.user],
             },
         },
         {
@@ -46,7 +40,6 @@ export default {
             meta: {
                 locale: "",
                 requiresAuth: true,
-                roles: [RoleType.admin],
             },
         },
     ],

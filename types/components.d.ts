@@ -7,10 +7,10 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HeaderSearch: typeof import('./../src/components/headerSearch/index.vue')['default']
+    HeaderSearch: typeof import('./../src/components/header-search/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SvgIcon: typeof import('./../src/components/SvgIcon/index.vue')['default']
-    TreePackage: typeof import('./../src/components/treePackage/index.vue')['default']
+    SvgIcon: typeof import('./../src/components/svg-icon/index.vue')['default']
+    TreePackage: typeof import('./../src/components/tree-package/index.vue')['default']
   }
 }

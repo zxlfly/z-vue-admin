@@ -1,6 +1,6 @@
 <template>
     <Icon v-if="name.includes(':')" class="svg-icon" :icon="name" />
-    <!-- 这样熟悉可以透传下来，嵌套el-icon也可以正常设置属性 -->
+    <!-- 这样属性可以透传下来，嵌套el-icon也可以正常设置属性 -->
     <svg v-else aria-hidden="true" class="svg-icon">
         <use :xlink:href="symbolId" />
     </svg>

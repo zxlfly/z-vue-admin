@@ -1,6 +1,6 @@
-import { ServerOptions } from "vite";
+import { ServerOptions } from "vite"
 
 export const server: ServerOptions = {
-	host: "0.0.0.0",
-	open: true,
-};
+    host: "0.0.0.0",
+    open: true,
+}

@@ -1,12 +1,13 @@
 import { ROUTER_LIST } from "@/config/cache"
 // import { LocalStorageService } from "@/utils/storage"
-import { constantRoute, asyncRoute, anyRoute } from "@/router/routes"
+import { constantRoute, anyRoute } from "@/router/static-routes"
+import dynamicRoutes from "@/router/modules/index"
 import type { RouteRecordRaw } from "vue-router"
 
 export const useRouterListStore = defineStore(ROUTER_LIST, () => {
     const routerList: Ref<RouteRecordRaw[]> = ref([
         ...constantRoute,
-        ...asyncRoute,
+        ...dynamicRoutes,
         anyRoute,
     ])
     const getRouterList = computed(() => routerList.value)

@@ -5,7 +5,7 @@ import axios, {
 } from "axios"
 import { LocalStorageService } from "@/utils/storage"
 import { TOKEN } from "@/config/cache"
-import { setRequest } from "./useCancelDuplicateRequest"
+import { setRequest } from "./use-cancel-duplicate-request"
 // 类型扩展文件件types目录
 const service = axios.create({
     baseURL: import.meta.env.VITE_APP_API_BASEURL,
@@ -15,7 +15,7 @@ const service = axios.create({
     // timeout: 10000,
 })
 // 全局的loading控制
-import { showLoading, closeLoading } from "./useRequestCount"
+import { showLoading, closeLoading } from "./use-request-count"
 service.interceptors.request.use(
     (config: InternalAxiosRequestConfig<any>) => {
         setRequest(config)

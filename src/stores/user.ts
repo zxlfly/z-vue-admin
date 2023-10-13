@@ -2,7 +2,8 @@ import { loginApi, getUserInfo, type UserLoginInfo } from "@/api/user"
 import { USER, TOKEN } from "@/config/cache"
 import { LocalStorageService } from "@/utils/storage"
 import { ElNotification } from "element-plus"
-import { constantRoute, asyncRoute, anyRoute } from "@/router/routes"
+import { constantRoute, anyRoute } from "@/router/static-routes"
+import dynamicRoutes from "@/router/modules/index"
 import type { RouteRecordRaw } from "vue-router"
 import { cloneDeep } from "lodash-es"
 import routerconfig from "@/router/index"
@@ -58,7 +59,7 @@ export const useUserStore = defineStore(USER, () => {
     const getRouterMenu = () => {
         const routes = filterAsyncRoute(
             userInfo.value?.routes ?? [],
-            cloneDeep(asyncRoute),
+            cloneDeep(dynamicRoutes),
         )
         menuRoutes.value = [...constantRoute, ...routes, anyRoute]
         ;[...routes, anyRoute].forEach((route: any) => {

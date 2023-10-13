@@ -1,6 +1,6 @@
 import { createApp } from "vue"
 import { createPinia } from "pinia"
-
+import i18n from "@/locales/index"
 import ElementPlus from "element-plus"
 import "virtual:windi.css"
 import "virtual:svg-icons-register"
@@ -12,6 +12,7 @@ import router from "./router"
 // }
 const app = createApp(App)
 app.use(createPinia())
+app.use(i18n)
 app.use(ElementPlus)
 app.use(router)
 // 自动导入icon有问题 暂时使用全局导入

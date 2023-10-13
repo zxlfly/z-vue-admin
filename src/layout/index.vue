@@ -42,10 +42,10 @@
 </template>
 
 <script setup lang="ts" name="Layout">
-import MenuList from "./components/Menu/index.vue"
-import Main from "./components/Main/index.vue"
-import Tabbar from "./components/Tabbar/index.vue"
-import Credits from "./components/Credits/index.vue"
+import MenuList from "./components/menu/index.vue"
+import Main from "./components/main/index.vue"
+import Tabbar from "./components/tabbar/index.vue"
+import Credits from "./components/credits/index.vue"
 import { useUserStore } from "@/stores/user.ts"
 import { useLayOutSettingStore } from "@/stores/layout-setting.ts"
 let useLayOutSetting = useLayOutSettingStore()

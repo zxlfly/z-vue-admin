@@ -1,15 +1,14 @@
-import { RoleType } from "@/router/types/RoleType"
+import { RoleType } from "@/router/types/role-type"
 
 export default {
     path: "form",
     name: "Form",
-    id: "Form",
     label: "表单控件",
     component: () => import("@/views/form/index.vue"),
     meta: {
         locale: "menu.form",
         requiresAuth: true,
-        order: 3,
+        order: 4,
         roles: [RoleType.admin, RoleType.user],
     },
     children: [
