@@ -10,7 +10,6 @@ declare module 'vue' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     HelloWorld: typeof import('./../src/components/HelloWorld.vue')['default']
-    IEpEdit: typeof import('~icons/ep/edit')['default']
     IEpMenu: typeof import('~icons/ep/menu')['default']
     IEpPlus: typeof import('~icons/ep/plus')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

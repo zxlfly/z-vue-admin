@@ -1,9 +1,23 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, onMounted } from "vue"
+import axios from "axios"
 let count = ref(0)
 let count2 = count.value > 0 ? 1 : 0
 console.log(count2)
 console.log(import.meta.env)
+onMounted(() => {
+    // 发送 POST 请求
+    axios({
+        method: "post",
+        url: "/api/login",
+        data: {
+            username: "admin",
+            password: "123456",
+        },
+    }).then((res) => {
+        console.log(res)
+    })
+})
 </script>
 
 <template>
