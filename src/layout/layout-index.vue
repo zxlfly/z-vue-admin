@@ -10,7 +10,17 @@
                 <!-- 内容展示区域 -->
                 <el-scrollbar class="layout-main">
                     <div>
-                        <p v-for="item in 200" :key="item" style="height: 40px; line-height: 40px; text-align: center">
+                        <p
+                            v-for="item in 200"
+                            :key="item"
+                            style="height: 40px; line-height: 40px; text-align: center"
+                            bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
+                            text="sm white"
+                            font="mono light"
+                            p="y-2 x-4"
+                            border="2 rounded blue-200"
+                            class="ttt"
+                        >
                             {{ item }}
                         </p>
                     </div>
@@ -66,5 +76,9 @@
             }
         }
     }
+}
+
+.ttt {
+    @apply text-white;
 }
 </style>

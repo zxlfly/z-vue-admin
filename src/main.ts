@@ -1,4 +1,5 @@
 import { createApp } from "vue"
+import "virtual:uno.css"
 import "./assets/style/index.scss"
 import App from "./App.vue"
 import elementPlugin from "./plugins/element"
