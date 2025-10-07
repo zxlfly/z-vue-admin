@@ -1,0 +1,16 @@
+:root {
+    --z-admin-layout-body-bg: #f5f5f5; /* body背景颜色 */
+    --z-admin-layout-page-bg: #f5f5f5; /* layout背景颜色 */
+    --z-admin-layout-header-height: 60px; /* 顶部header高度 */
+    --z-admin-layout-header-bg: #fff; /* 顶部header背景颜色 */
+    --z-admin-layout-header-box-shadow-color: #ccc; /* 顶部header盒子阴影颜色 */
+    --z-admin-layout-container-bg: #f5f5f5; /* 顶部header背景颜色 */
+    --z-admin-layout-slider-width: 260px; /* 左侧菜单栏宽度 */
+    --z-admin-layout-slider-bg: #fff; /* 左侧菜单栏背景颜色 */
+    --z-admin-layout-main-bg: #fff; /* 中间内容展示区域背景颜色 */
+    --z-admin-layout-footer-height: 40px; /* 底部footer高度 */
+    --z-admin-layout-footer-bg: #f5f5f5; /* 底部footer背景颜色 */
+    --z-admin-module-margin: 10px; /* 模块边距 */
+    --z-admin-content-margin: 5px; /* 内容块边距 */
+    --z-admin-element-margin: 2px; /* 元素边距 */
+}

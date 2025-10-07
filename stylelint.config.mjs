@@ -1,9 +1,6 @@
 /** @type {import("stylelint").Config} */
 export default {
-    extends: [
-        "stylelint-config-standard-scss",
-        "stylelint-config-recommended-vue",
-    ],
+    extends: ["stylelint-config-standard-scss", "stylelint-config-recommended-vue"],
     plugins: ["stylelint-order"],
     overrides: [
         {
@@ -29,6 +26,6 @@ export default {
                 ignorePseudoClasses: ["global", "v-deep", "deep"], // 忽略属性，修改UI库默认样式的时候能使用到
             },
         ],
-        "scss/operator-no-newline-after": true,
+        "scss/operator-no-newline-after": null,
     },
 }

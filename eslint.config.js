@@ -28,4 +28,7 @@ export default defineConfig([
         languageOptions: { parserOptions: { parser: tseslint.parser } },
     },
     eslintPluginPrettierRecommended,
+    {
+        rules: {},
+    },
 ])
