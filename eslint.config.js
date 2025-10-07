@@ -4,14 +4,21 @@ import tseslint from "typescript-eslint"
 import pluginVue from "eslint-plugin-vue"
 import { defineConfig } from "eslint/config"
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
-
+// 也可以通过fs来处理
+import { createRequire } from "module"
+const require = createRequire(import.meta.url)
+const autoInport = require("./types/autoImport/.eslintrc-auto-import.json")
 export default defineConfig([
     {
         files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"],
         plugins: { js },
         extends: ["js/recommended"],
         languageOptions: {
-            globals: { ...globals.browser, ...globals.node },
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+                ...autoInport.globals,
+            },
         },
     },
     tseslint.configs.recommended,

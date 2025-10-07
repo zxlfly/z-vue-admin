@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue"
+const { proxy } = getCurrentInstance()!
+const msg = ref("3333")
+const handle = () => {
+    proxy?.$message({
+        message: "123123",
+        grouping: true,
+        type: "success",
+    })
+}
 </script>
 
 <template>
@@ -11,7 +19,8 @@ import HelloWorld from "./components/HelloWorld.vue"
             <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
         </a>
     </div>
-    <HelloWorld msg="Vite + Vue" />
+    <el-button @click="handle">按钮</el-button>
+    <HelloWorld :msg="msg" />
 </template>
 
 <style scoped lang="scss">
