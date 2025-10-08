@@ -10,19 +10,7 @@
 // release：发布
 // chore: 更改构建过程或辅助工具和库，例如文档生成
 // revert: 回滚到上一个版本
-const types = [
-    "feat",
-    "fix",
-    "docs",
-    "style",
-    "refactor",
-    "perf",
-    "test",
-    "build",
-    "release",
-    "chore",
-    "revert",
-]
+const types = ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "release", "chore", "revert"]
 
 module.exports = {
     extends: ["@commitlint/config-conventional"],

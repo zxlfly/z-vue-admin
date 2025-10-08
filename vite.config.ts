@@ -5,6 +5,8 @@ import Components from "unplugin-vue-components/vite"
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 import ElementPlus from "unplugin-element-plus/vite"
 import UnoCSS from "unocss/vite"
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
+import path from "path"
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [
@@ -25,5 +27,16 @@ export default defineConfig({
         }),
         ElementPlus({}),
         UnoCSS({}),
+        createSvgIconsPlugin({
+            // 指定需要缓存的图标文件夹
+            iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
+            // 指定symbolId格式
+            symbolId: "icon-[dir]-[name]",
+            /**
+             * 自定义插入位置
+             * @default: body-last
+             */
+            inject: "body-first",
+        }),
     ],
 })

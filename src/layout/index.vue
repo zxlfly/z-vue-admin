@@ -1,7 +1,15 @@
 <template>
     <div class="layout-page">
         <!-- 顶部导航 -->
-        <div class="layout-header">header</div>
+        <div class="layout-header">
+            header
+            <div style=" height: 20px;width: 20px" i-ep:chrome-filled></div>
+            <SvgIcon name="material-symbols:10k-outline-sharp" animate="spin" />
+            <SvgIcon name="ep:chrome-filled" animate="pulse" />
+            <SvgIcon name="ep:chrome-filled" animate="bounce" />
+            <SvgIcon name="ep:chrome-filled" animate="flip" />
+            <SvgIcon name="phone" color="red" size="50px" type="local" />
+        </div>
         <!-- 主体容器 -->
         <div class="layout-container">
             <!-- 左侧菜单 -->

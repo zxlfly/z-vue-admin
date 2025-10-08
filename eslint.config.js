@@ -29,6 +29,13 @@ export default defineConfig([
     },
     eslintPluginPrettierRecommended,
     {
-        rules: {},
+        rules: {
+            "vue/multi-word-component-names": [
+                "error",
+                {
+                    ignores: ["index"], // 忽略名为 index 的组件
+                },
+            ],
+        },
     },
 ])
