@@ -3,12 +3,12 @@
         <!-- 顶部导航 -->
         <div class="layout-header">
             header
-            <div style=" height: 20px;width: 20px" i-ep:chrome-filled></div>
-            <SvgIcon name="material-symbols:10k-outline-sharp" animate="spin" />
-            <SvgIcon name="ep:chrome-filled" animate="pulse" />
+            <div style="height: 20px; width: 20px" i-ep:chrome-filled></div>
+            <SvgIcon disabled name="material-symbols:10k-outline-sharp" animate="spin" size="30px" />
+            <SvgIcon customClass="text-blue" name="ep:chrome-filled" animate="pulse" size="2em" />
             <SvgIcon name="ep:chrome-filled" animate="bounce" />
-            <SvgIcon name="ep:chrome-filled" animate="flip" />
-            <SvgIcon name="phone" color="red" size="50px" type="local" />
+            <SvgIcon customClass="text-red" name="ep:chrome-filled" animate="flip" />
+            <SvgIcon disabled name="phone" customClass="text-blue" size="25px" type="local" />
         </div>
         <!-- 主体容器 -->
         <div class="layout-container">
