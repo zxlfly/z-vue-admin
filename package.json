@@ -4,9 +4,9 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
+        "preview": "vite preview",
         "dev": "vite",
         "build": "vue-tsc -b && vite build",
-        "preview": "vite preview",
         "prepare": "husky",
         "lint": "pnpm lint:eslint && pnpm lint:css",
         "lint:eslint": "eslint src/**/*.{js,ts,vue,html} --cache --quiet --fix",
